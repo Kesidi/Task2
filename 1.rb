@@ -86,7 +86,7 @@ library.add_book_order(BookOrder.new("John", "book3", Time.now+rand(300)))
 library.add_book_order(BookOrder.new("John", "book3",Time.now+rand(300)))
 library.print
 puts library.smallest_period
-puts "count uncomplete orders - "+library.count_uncomplete_orders.to_s
+puts " count uncomplete orders - "+library.count_uncomplete_orders.to_s
 puts library.most_popular_book
 puts library.often_take_book("book3")
 puts library.count_people_ordered_most_popular_books
