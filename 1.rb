@@ -31,17 +31,7 @@ class Library
   end
   # the smallest period for which library found a book 
   def smallest_period
-    min = 301 
-    @book_orders.each {|x| min = x.order_time if x.order_time != nil}
-    @book_orders.each {|x| min = x.order_time if (x.order_time != nil and  min > x.order_time)}
-    #return Time.at(min).getgm.strftime("%H:%M:%S")
-    #min = @book_orders.min_by {|x| x.order_time}
-    #min.order_time
-    if (min == 301) 
-      "No complete orders"
-    else
-      Time.at(min).getgm.strftime("%H:%M:%S")
-    end
+    @book_orders.map(&:order_time).compact.length > 0 ? Time.at(@book_orders.map(&:order_time).compact.min).getgm.strftime("%H:%M:%S") : "No complete orders"
   end
   # how many orders were not satisfied
   def count_uncomplete_orders
